@@ -19,14 +19,20 @@ public class SpacecraftMovement {
                 arrayOfDirections.add(direction);
             } else if(commands[i]=='l') {
                 lastChar = findLastDirection(arrayOfDirections, arrayOfDirections.size());
-                direction = turnRight(direction,lastChar);
+                direction = turnLeft(direction,lastChar);
                 arrayOfDirections.add(direction);
-            }
+            } else if(commands[i]=='u') {
+                direction = turnUp(direction);
+                arrayOfDirections.add(direction);
+            } else if(commands[i]=='d') {
+                direction = turnDown(direction);
+                arrayOfDirections.add(direction);
+            }   
             
         }
+        System.out.println("Final Direction: " + direction);
+        System.out.println("Final Position: (" + position[0] + ", " + position[1] + ", " + position[2] + ")");
 
-       System.out.println("Final Position: (" + position[0] + ", " + position[1] + ", " + position[2] + ")");
-       System.out.println("Final Direction: " + direction);
     }
 
     // moveForward method Implementation
@@ -148,6 +154,24 @@ public class SpacecraftMovement {
                 
             default:
                 return direction;
+        }
+    }
+
+    // turnUp method Implementation
+    public static char turnUp(char direction) {
+        if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W') {
+            return 'U';
+        } else {
+            return direction;
+        }
+    }
+
+    // turnDown method Implementation
+    public static char turnDown(char direction) {
+        if (direction == 'N' || direction == 'S' || direction == 'E' || direction == 'W') {
+            return 'D';
+        } else {
+            return direction;
         }
     }
 
