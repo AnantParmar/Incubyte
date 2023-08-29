@@ -1,0 +1,27 @@
+// #1 moveForward 
+parameter ==> char direction, int[] position
+return value ==> void
+
+// #2 moveBackward 
+parameter ==> char direction, int[] position
+return value ==> void
+
+// #3 turnRight 
+parameter ==> char direction, char lastDirectionr
+return value ==> char
+
+// #4 turnLeft 
+parameter ==> char direction, char lastDirection
+return value ==> char
+
+// #5 turnUp 
+parameter ==> char direction
+return value ==> char
+
+// #6 moveDown 
+parameter ==> char direction
+return value ==> char
+
+// #7 findLastDirection 
+parameter ==> ArrayList<Character> arrayOfDirections,int i
+return value ==> char

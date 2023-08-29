@@ -97,7 +97,7 @@ public class SpacecraftMovement {
     }
 
     // turnRight methd Implementation
-    public static char turnRight(char direction, char lastChar) {
+    public static char turnRight(char direction, char lastDirection) {
         switch (direction) {
             case 'N':
                 return 'E';
@@ -108,25 +108,25 @@ public class SpacecraftMovement {
             case 'W':
                 return 'N';
             case 'U':
-                if(lastChar == 'E')
+                if(lastDirection == 'E')
                     return 'S';
-                else if(lastChar == 'W')
+                else if(lastDirection == 'W')
                     return 'N';
-                else if(lastChar == 'N')
+                else if(lastDirection == 'N')
                     return 'E';
-                else if(lastChar == 'S')
+                else if(lastDirection == 'S')
                     return 'W';
                 else
                     return direction;
                 
             case 'D':
-                if(lastChar == 'E')
+                if(lastDirection == 'E')
                     return 'S';
-                else if(lastChar == 'W')
+                else if(lastDirection == 'W')
                     return 'N';
-                else if(lastChar == 'N')
+                else if(lastDirection == 'N')
                     return 'E';
-                else if(lastChar == 'S')
+                else if(lastDirection == 'S')
                     return 'W';
                 else 
                     return direction;
@@ -136,7 +136,7 @@ public class SpacecraftMovement {
     }
 
     // turnLeft method implementation
-    public static char turnLeft(char direction,char lastChar) {
+    public static char turnLeft(char direction,char lastDirection) {
         switch (direction) {
             case 'N':
                 return 'W';
@@ -147,22 +147,22 @@ public class SpacecraftMovement {
             case 'W':
                 return 'S';
             case 'U':
-                if(lastChar == 'E')
+                if(lastDirection == 'E')
                     return 'N';
-                else if(lastChar == 'W')
+                else if(lastDirection == 'W')
                     return 'S';
-                else if(lastChar == 'N')
+                else if(lastDirection == 'N')
                     return 'W';
-                else if(lastChar == 'S')
+                else if(lastDirection == 'S')
                     return 'E';
             case 'D':
-                if(lastChar == 'E')
+                if(lastDirection == 'E')
                     return 'N';
-                else if(lastChar == 'W')
+                else if(lastDirection == 'W')
                     return 'S';
-                else if(lastChar == 'N')
+                else if(lastDirection == 'N')
                     return 'W';
-                else if(lastChar == 'S')
+                else if(lastDirection == 'S')
                     return 'E'; 
             default:
                 return direction;
