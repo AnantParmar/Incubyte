@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class SpacecraftMovement {
     public static void main(String[] args) {
-       int[] position = {0,0,0};
+       int[] position = {10,10,0};
        char direction = 'N';
-       char[] commands = {'f', 'r', 'u', 'b', 'l'};
+       char[] commands = {'f', 'r', 'f', 'r', 'f', 'l', 'f', 'l', 'b', 'b'};
        ArrayList<Character> arrayOfDirections = new ArrayList<Character>();
        arrayOfDirections.add('N');
        char lastDirection = 'N';
