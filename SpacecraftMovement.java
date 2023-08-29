@@ -7,26 +7,39 @@ public class SpacecraftMovement {
        char[] commands = {'f', 'r', 'u', 'b', 'l'};
        ArrayList<Character> arrayOfDirections = new ArrayList<Character>();
        arrayOfDirections.add('N');
-       char lastChar = 'N';
+       char lastDirection = 'N';
         for(int i=0;i<commands.length;i++) {
-            if(commands[i]=='f') {
-                moveForward(direction, position);
-            } else if(commands[i]=='b') {
-                moveBackward(direction, position);
-            } else if(commands[i]=='r') {
-                lastChar = findLastDirection(arrayOfDirections, arrayOfDirections.size());
-                direction = turnRight(direction,lastChar);
-                arrayOfDirections.add(direction);
-            } else if(commands[i]=='l') {
-                lastChar = findLastDirection(arrayOfDirections, arrayOfDirections.size());
-                direction = turnLeft(direction,lastChar);
-                arrayOfDirections.add(direction);
-            } else if(commands[i]=='u') {
-                direction = turnUp(direction);
-                arrayOfDirections.add(direction);
-            } else if(commands[i]=='d') {
-                direction = turnDown(direction);
-                arrayOfDirections.add(direction);
+            switch (commands[i]) {
+                case 'f':
+                    moveForward(direction, position);
+                    break;
+
+                case 'b':
+                    moveBackward(direction, position);
+                    break;
+
+                case 'r':
+                    lastDirection = findLastDirection(arrayOfDirections, arrayOfDirections.size());
+                    direction = turnRight(direction,lastDirection);
+                    arrayOfDirections.add(direction);
+                    break;
+
+                case 'l':
+                    lastDirection = findLastDirection(arrayOfDirections, arrayOfDirections.size());
+                    direction = turnLeft(direction,lastDirection);
+                    arrayOfDirections.add(direction);
+                    break;
+
+                case 'u':
+                    direction = turnUp(direction);
+                    arrayOfDirections.add(direction);
+                    break;
+
+                case 'd':
+                    direction = turnDown(direction);
+                    arrayOfDirections.add(direction);
+                    break;
+                
             }   
             
         }
@@ -96,27 +109,27 @@ public class SpacecraftMovement {
                 return 'N';
             case 'U':
                 if(lastChar == 'E')
-                return 'S';
+                    return 'S';
                 else if(lastChar == 'W')
-                return 'N';
+                    return 'N';
                 else if(lastChar == 'N')
-                return 'E';
+                    return 'E';
                 else if(lastChar == 'S')
-                return 'W';
+                    return 'W';
                 else
-                return direction;
+                    return direction;
                 
             case 'D':
                 if(lastChar == 'E')
-                return 'S';
+                    return 'S';
                 else if(lastChar == 'W')
-                return 'N';
+                    return 'N';
                 else if(lastChar == 'N')
-                return 'E';
+                    return 'E';
                 else if(lastChar == 'S')
-                return 'W';
+                    return 'W';
                 else 
-                return direction;
+                    return direction;
             default:
                 return direction;
         }
@@ -135,23 +148,22 @@ public class SpacecraftMovement {
                 return 'S';
             case 'U':
                 if(lastChar == 'E')
-                return 'N';
+                    return 'N';
                 else if(lastChar == 'W')
-                return 'S';
+                    return 'S';
                 else if(lastChar == 'N')
-                return 'W';
+                    return 'W';
                 else if(lastChar == 'S')
-                return 'E';
+                    return 'E';
             case 'D':
                 if(lastChar == 'E')
-                return 'N';
+                    return 'N';
                 else if(lastChar == 'W')
-                return 'S';
+                    return 'S';
                 else if(lastChar == 'N')
-                return 'W';
+                    return 'W';
                 else if(lastChar == 'S')
-                return 'E';
-                
+                    return 'E'; 
             default:
                 return direction;
         }
@@ -176,13 +188,13 @@ public class SpacecraftMovement {
     }
 
     // findLastDirection method implementation
-    public static char findLastDirection(ArrayList<Character> dr,int i) {
+    public static char findLastDirection(ArrayList<Character> arrayOfDirections,int i) {
         for(int j = i-1;j>=0;j--) {
-            char temp = dr.get(j);
+            char temp = arrayOfDirections.get(j);
             if(temp != 'U' && temp != 'D')
             return temp;
         }
-        return dr.get(i-1);
+        return arrayOfDirections.get(i-1);
     }
 
 }
