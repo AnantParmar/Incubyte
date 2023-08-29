@@ -1,15 +1,28 @@
+import java.util.ArrayList;
+
 public class SpacecraftMovement {
     public static void main(String[] args) {
        int[] position = {0,0,0};
        char direction = 'N';
        char[] commands = {'f', 'r', 'u', 'b', 'l'};
-       
+       ArrayList<Character> arrayOfDirections = new ArrayList<Character>();
+       arrayOfDirections.add('N');
+       char lastChar = 'N';
         for(int i=0;i<commands.length;i++) {
             if(commands[i]=='f') {
                 moveForward(direction, position);
             } else if(commands[i]=='b') {
                 moveBackward(direction, position);
+            } else if(commands[i]=='r') {
+                lastChar = findLastDirection(arrayOfDirections, arrayOfDirections.size());
+                direction = turnRight(direction,lastChar);
+                arrayOfDirections.add(direction);
+            } else if(commands[i]=='l') {
+                lastChar = findLastDirection(arrayOfDirections, arrayOfDirections.size());
+                direction = turnRight(direction,lastChar);
+                arrayOfDirections.add(direction);
             }
+            
         }
 
        System.out.println("Final Position: (" + position[0] + ", " + position[1] + ", " + position[2] + ")");
@@ -63,4 +76,89 @@ public class SpacecraftMovement {
                 break;
         }
     }
+
+    // turnRight methd Implementation
+    public static char turnRight(char direction, char lastChar) {
+        switch (direction) {
+            case 'N':
+                return 'E';
+            case 'S':
+                return 'W';
+            case 'E':
+                return 'S';
+            case 'W':
+                return 'N';
+            case 'U':
+                if(lastChar == 'E')
+                return 'S';
+                else if(lastChar == 'W')
+                return 'N';
+                else if(lastChar == 'N')
+                return 'E';
+                else if(lastChar == 'S')
+                return 'W';
+                else
+                return direction;
+                
+            case 'D':
+                if(lastChar == 'E')
+                return 'S';
+                else if(lastChar == 'W')
+                return 'N';
+                else if(lastChar == 'N')
+                return 'E';
+                else if(lastChar == 'S')
+                return 'W';
+                else 
+                return direction;
+            default:
+                return direction;
+        }
+    }
+
+    // turnLeft method implementation
+    public static char turnLeft(char direction,char lastChar) {
+        switch (direction) {
+            case 'N':
+                return 'W';
+            case 'S':
+                return 'E';
+            case 'E':
+                return 'N';
+            case 'W':
+                return 'S';
+            case 'U':
+                if(lastChar == 'E')
+                return 'N';
+                else if(lastChar == 'W')
+                return 'S';
+                else if(lastChar == 'N')
+                return 'W';
+                else if(lastChar == 'S')
+                return 'E';
+            case 'D':
+                if(lastChar == 'E')
+                return 'N';
+                else if(lastChar == 'W')
+                return 'S';
+                else if(lastChar == 'N')
+                return 'W';
+                else if(lastChar == 'S')
+                return 'E';
+                
+            default:
+                return direction;
+        }
+    }
+
+    // findLastDirection method implementation
+    public static char findLastDirection(ArrayList<Character> dr,int i) {
+        for(int j = i-1;j>=0;j--) {
+            char temp = dr.get(j);
+            if(temp != 'U' && temp != 'D')
+            return temp;
+        }
+        return dr.get(i-1);
+    }
+
 }
